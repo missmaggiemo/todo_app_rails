@@ -1,0 +1,21 @@
+<!-- home -->
+
+<div class='todo_items center'>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <td><h3><%= check_box_tag name='complete', checked= @todo_item.complete %></h3></td>
+          <td><h3><%= link_to @todo_item.description, @todo_item %></h3></td>
+          <td><%= link_to 'Edit', edit_todo_item_path(@todo_item) %></td>
+          <td><%= link_to 'Destroy', @todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
