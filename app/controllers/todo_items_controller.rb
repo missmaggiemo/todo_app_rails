@@ -61,6 +61,15 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  def remove_all
+    @todo_items = TodoItem.all
+    @todo_items.each do |item|
+        item.destroy()
+     end
+    flash[:notice] = "All todo items have been deleted."
+    redirect_to root_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_item

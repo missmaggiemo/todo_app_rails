@@ -1,5 +1,3 @@
 # TODO
 
-Create TODO app views.
-
-Create TodoItem model.
+Still can't get the todoItem to dave and call up the item ID.

@@ -9,6 +9,8 @@
       </tr>
     </thead>
 
+<% if @todo_item %>
+
     <tbody>
         <tr>
           <td><h3><%= check_box_tag name='complete', checked= @todo_item.complete %></h3></td>
@@ -18,4 +20,7 @@
         </tr>
     </tbody>
   </table>
+
+<% end %>
+
 </div>
