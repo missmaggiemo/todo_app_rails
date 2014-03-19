@@ -3,10 +3,10 @@
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
 var TodoItem = Backbone.Model.extend({
+  idAttribute: 'id',
   defaults: {
-    description: "Work",
+    description: "Default",
     complete: false
   },
-  idAttribute: "_id",
   urlRoot: '/todo_items'
 });
