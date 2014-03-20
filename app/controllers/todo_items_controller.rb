@@ -28,7 +28,7 @@ class TodoItemsController < ApplicationController
 
     respond_to do |format|
       if @todo_item.save
-        format.html { redirect_to @todo_item, notice: 'Todo item was successfully created.' }
+        format.html { redirect_to list_path(@todo_item.list_id), notice: 'Todo item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @todo_item }
       else
         format.html { render action: 'new' }
@@ -54,9 +54,10 @@ class TodoItemsController < ApplicationController
   # DELETE /todo_items/1
   # DELETE /todo_items/1.json
   def destroy
+    list = @todo_item.list_id
     @todo_item.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to list_path(list) }
       format.json { head :no_content }
     end
   end
@@ -78,6 +79,6 @@ class TodoItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_item_params
-      params.require(:todo_item).permit(:description, :complete)
+      params.require(:todo_item).permit(:description, :complete, :list_id, :notes)
     end
 end

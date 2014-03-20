@@ -1,20 +1,18 @@
 TodoApp::Application.routes.draw do
 
-   resources :todo_items do
-     collection do
-       delete :remove_all
-     end
-  end
+  resources :lists, only: [:create, :new, :show, :destroy]
+
+  resources :todo_items, only: [:create, :edit, :show, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'lists#new'
 
   # Example of regular route:
-    get '/new' => 'todo_items#new'
-    get '/items' => 'todo_items#index'
+  # match '/new', to: 'todo_items#new', via: 'get'
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

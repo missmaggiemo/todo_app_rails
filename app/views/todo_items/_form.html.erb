@@ -1,10 +1,10 @@
-<%= form_for(@todo_item) do |f| %>
-  <% if @todo_item.errors.any? %>
+<%= form_for(todo_item) do |f| %>
+  <% if todo_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+      <h2><%= pluralize(todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
 
       <ul>
-      <% @todo_item.errors.full_messages.each do |msg| %>
+      <% todo_item.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,14 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, placeholder: 'Description (e.g., Laundry)' %>
+  </div>
+  <div class="field" style="display: none">
+    <%= f.check_box :complete, value: false %>
   </div>
   <div class="field">
-    <%= f.label :complete %><br>
-    <%= f.check_box :complete %>
+    <%= f.number_field :list_id, placeholder: 'List ID (e.g., 1)'%>
+  </div>
+  <div class="field">
+    <%= f.text_field :notes, placeholder: 'Notes (e.g., Wash whites first)'%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Add it to the list.'%>
   </div>
 <% end %>
+
+
+<!-- <form accept-charset='UTF-8' action='/todo_items' class='new_todo_item' id='new_todo_item' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='AVe7bj8BLXu4omhfwYrL3JF/V6DDhjv0e4NuC3PfqaY='></div><div class='field'> <input id='todo_item_description' name='todo_item[description]' type='text' placeholder='Description (e.g., Laundry)'> </div> <div class='actions'> <input name='commit' type='submit' value='Add it to the list.'> </div></form> -->

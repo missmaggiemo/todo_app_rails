@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<div class="todo_items" data-list=<%= @list.id%> >
+
+<% if @todo_items.empty? == false %>
+  <% @todo_items.each do |item| %>
+    <div class='todo_item'>
+      <table>
+        <tbody>
+            <tr>
+              <td><h3><%= check_box_tag name='complete', checked= item.complete %></h3></td>
+              <td><h3><%= link_to item.description, item %></h3></td>
+              <td><%= link_to 'Edit', edit_todo_item_path(item) %></td>
+              <td><%= link_to 'Remove', item, method: :delete, id: 'destroy', rel: 'nofollow' %></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+<%else %>
+
+  <%= form_for(@new_todo_item, html: {class: "new_todo_item center"}) do |f| %>
+    <% if @new_todo_item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@new_todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+
+        <ul>
+        <% todo_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_field :description, placeholder: 'Description (e.g., Laundry)' %>
+    </div>
+    <div class="field" style="display: none">
+      <%= f.check_box :complete, value: false %>
+    </div>
+    <div class="field" style="display: none">
+      <%= f.number_field :list_id, value: @list.id %>
+    </div>
+    <div class="field">
+      <%= f.text_field :notes, placeholder: 'Notes (e.g., Wash whites first)'%>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Add it to the list.'%>
+    </div>
+  <% end %>
+
+<% end %>
+
+</div>
+
+<div class="center">
+  <%= link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

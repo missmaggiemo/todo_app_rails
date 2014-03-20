@@ -7,7 +7,7 @@ window.TodoApp =
     console.log("Welcome to Backbone.js!")
 
 
-htmlNewItemForm = "<form accept-charset='UTF-8' action='/todo_items' class='new_todo_item' id='new_todo_item' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='AVe7bj8BLXu4omhfwYrL3JF/V6DDhjv0e4NuC3PfqaY='></div><div class='field'> <input id='todo_item_description' name='todo_item[description]' type='text' placeholder='Description (e.g., Laundry)'> </div> <div class='actions'> <input name='commit' type='submit' value='Add it to the list.'> </div></form>"
+htmlNewItemForm = "<form accept-charset='UTF-8' action='/todo_items' class='new_todo_item center' id='new_todo_item' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='AVe7bj8BLXu4omhfwYrL3JF/V6DDhjv0e4NuC3PfqaY='></div><div class='field'> <input id='todo_item_description' name='todo_item[description]' type='text' placeholder='Description (e.g., Laundry)'> </div><div class='field'><input id='todo_item_notes' name='todo_item[notes]' placeholder='Notes (e.g., Wash whites first)' type='text'></div><div class='actions'> <input name='commit' type='submit' value='Add it to the list.'> </div></form>"
 
 
 $(document).ready ->
@@ -19,10 +19,11 @@ $(document).ready ->
     $(".todo_items").find('form').submit (event) ->
       event.preventDefault()
       attr1 = $('form').find('input[id=todo_item_description]').val()
-      # attr2 = $('form').find('input:checkbox').is(':checked')
+      attr2 = $('form').closest('.todo_items').data('list')
+      console.log(attr2)
       todoItem = new TodoItem()
       todoCol = new TodoCollection()
-      todoItem.set({description: attr1, complete: false})
+      todoItem.set({description: attr1, complete: false, list_id: attr2})
       todoItem.save()
 
       todoCol.fetch({success: (collection) ->

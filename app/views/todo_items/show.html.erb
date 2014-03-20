@@ -1,23 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class='todo_items center'>
-  <table>
-    <thead>
-      <tr>
-        <th><h3>Description</h3></th>
-        <th><h3>Complete?</h3></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+<div>
+  <h1><%= @todo_item.description%></h1>
+  <span>Created at: <%= @todo_item.created_at%></span>
+  |
+  <span>List number: <%= link_to @todo_item.list_id, list_path(@todo_item.list_id) %></span>
+</div>
 
-    <tbody>
-        <tr>
-          <td><%= @todo_item.description %></td>
-          <td><%= @todo_item.complete %></td>
-          <td><%= link_to 'Edit', edit_todo_item_path(@todo_item) %></td>
-          <td><%= link_to 'Destroy', @todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    </tbody>
-  </table>
+<p>
+  <%= @todo_item.notes%>
+</p>
+
+<div class="center">
+<%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
+<%= link_to 'Destroy', @todo_item, method: :delete, data: { confirm: 'Are you sure?' }, id: 'destroy', rel: 'nofollow' %>
 </div>

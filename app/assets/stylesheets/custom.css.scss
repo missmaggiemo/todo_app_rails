@@ -27,6 +27,7 @@ li {
 
 .container {
 	width: 80%;
+	text-ailgn: center;
 }
 
 section{
@@ -35,6 +36,12 @@ section{
 
 textarea{
 	resize: vertical;
+}
+
+.hidden {
+	color: red;
+	display: none;
+	visibility: none;
 }
 
 .center{
@@ -109,9 +116,9 @@ a {
 	table {
 		width: 100%;
 
-		th {
-			text-align: left;
-			width: 30%;
+		td {
+			width: 25%;
+			text-align: center;
 		}
 	}
 
