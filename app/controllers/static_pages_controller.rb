@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @todo_item = TodoItem.last
+    @todo_items = TodoItem.all
   end
 
 

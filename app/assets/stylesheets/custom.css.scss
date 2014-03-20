@@ -130,3 +130,14 @@ a {
 		}
 	}
 }
+
+.new_todo_item {
+	div {
+		display: inline-block;
+		margin: 10px;
+	}
+
+	input {
+		margin: 0;
+	}
+}

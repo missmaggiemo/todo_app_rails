@@ -1,26 +1,29 @@
 <!-- home -->
 
 <div class='todo_items center'>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
 
-<% if @todo_item %>
-
-    <tbody>
+<% if @todo_items %>
+<% @todo_items.each do |item| %>
+  <div class='todo_item'>
+    <table>
+      <thead>
         <tr>
-          <td><h3><%= check_box_tag name='complete', checked= @todo_item.complete %></h3></td>
-          <td><h3><%= link_to @todo_item.description, @todo_item %></h3></td>
-          <td><%= link_to 'Edit', edit_todo_item_path(@todo_item) %></td>
-          <td><%= link_to 'Destroy', @todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th></th>
+          <th></th>
         </tr>
-    </tbody>
+      </thead>
 
+      <tbody>
+          <tr>
+            <td><h3><%= check_box_tag name='complete', checked= item.complete %></h3></td>
+            <td><h3><%= link_to item.description, item %></h3></td>
+            <td><%= link_to 'Edit', edit_todo_item_path(item) %></td>
+            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, id: 'destroy', rel: 'nofollow' %></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 <% end %>
-  </table>
+<% end %>
 
 </div>
