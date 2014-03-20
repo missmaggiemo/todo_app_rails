@@ -16,6 +16,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'mail', '2.5.4'
 # emails
 
+gem 'sass', '3.2.13'
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
