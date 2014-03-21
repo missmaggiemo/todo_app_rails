@@ -82,13 +82,29 @@ a {
 		float: left;
 		margin-left: 20px;
 		a {
+			display: inline-block;
+			background-color: transparent;
 			text-decoration: none;
 			color: black;
 
 			&:hover {
-				text-decoration: underline;
+				background-color: transparent;
+				text-decoration: none;
 				color: black;
 			}
+		}
+		img {
+			width: 4em;
+			display: inline-block;
+			vertical-align: top;
+		}
+		h1 {
+			display: inline-block;
+			vertical-align: top;
+			margin: 10px;
+			text-decoration: none;
+
+			&:hover {text-decoration: underline;}
 		}
 	}
 
