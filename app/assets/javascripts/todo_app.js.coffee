@@ -9,9 +9,10 @@ window.TodoApp =
 
 htmlNewItemForm = "<form accept-charset='UTF-8' action='/todo_items' class='new_todo_item center' id='new_todo_item' method='post'><div style='margin:0;padding:0;display:inline'><input name='utf8' type='hidden' value='✓'><input name='authenticity_token' type='hidden' value='AVe7bj8BLXu4omhfwYrL3JF/V6DDhjv0e4NuC3PfqaY='></div><div class='field'> <input id='todo_item_description' name='todo_item[description]' type='text' placeholder='Description (e.g., Laundry)'> </div><div class='field'><input id='todo_item_notes' name='todo_item[notes]' placeholder='Notes (e.g., Wash whites first)' type='text'></div><div class='actions'> <input name='commit' type='submit' value='Add it to the list.'> </div></form>"
 
-
 $(document).ready ->
   TodoApp.initialize()
+
+  delay = (ms, func) -> setTimeout func, ms
 
   $('#new').click (event) ->
     event.preventDefault()
@@ -25,16 +26,16 @@ $(document).ready ->
       todoCol = new TodoCollection()
       todoItem.set({description: attr1, complete: false, list_id: attr2})
       todoItem.save()
-
-      todoCol.fetch({success: (collection) ->
-        console.log(collection)
-        todoItem = collection.last()
-        console.log(todoItem)
-        todoView = new TodoView({model: todoItem})
-        todoView.render()
-        $('form').remove()
-        $('.todo_items').append(todoView.el)
-      })
+      
+      delay 300, ->
+        todoCol.fetch({success: (collection) ->
+          console.log(collection)
+          todoItem = collection.last()
+          console.log(todoItem)
+          todoView = new TodoView({model: todoItem})
+          todoView.render()
+          $('form').remove()
+          $('.todo_items').append(todoView.el)})
 
 
   $('#clear').click (event) ->
