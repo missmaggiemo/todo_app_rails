@@ -2,7 +2,7 @@ TodoApp::Application.routes.draw do
 
   resources :lists, only: [:create, :new, :show, :destroy]
 
-  resources :todo_items, only: [:create, :edit, :show, :update, :destroy]
+  resources :todo_items
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

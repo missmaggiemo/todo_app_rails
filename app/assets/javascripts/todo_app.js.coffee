@@ -36,8 +36,6 @@ $(document).ready ->
         $('.todo_items').append(todoView.el)
       })
 
-  console.log($('.todo_items'))
-  console.log($('.todo_item').find('input:checkbox'))
 
   $('#clear').click (event) ->
     event.preventDefault()

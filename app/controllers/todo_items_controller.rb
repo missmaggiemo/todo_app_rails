@@ -28,7 +28,7 @@ class TodoItemsController < ApplicationController
 
     respond_to do |format|
       if @todo_item.save
-        format.html { redirect_to list_path(@todo_item.list_id), notice: 'Todo item was successfully created.' }
+        format.html { redirect_to list_path(@todo_item.list_id) }
         format.json { render action: 'show', status: :created, location: @todo_item }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class TodoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_item.update(todo_item_params)
-        format.html { redirect_to @todo_item, notice: 'Todo item was successfully updated.' }
+        format.html { redirect_to @todo_item }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
