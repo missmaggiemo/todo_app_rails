@@ -14,6 +14,12 @@ $(document).ready ->
 
   delay = (ms, func) -> setTimeout func, ms
 
+  $('.todo_item').on('click', '#notes_link', (event) ->
+    event.preventDefault()
+    $(this).closest('.notes_holder').find('#notes').fadeToggle(200)
+    );
+
+
   $('#new').click (event) ->
     event.preventDefault()
     $(".todo_items").append(htmlNewItemForm)
@@ -21,17 +27,15 @@ $(document).ready ->
       event.preventDefault()
       attr1 = $('form').find('input[id=todo_item_description]').val()
       attr2 = $('form').closest('.todo_items').data('list')
-      console.log(attr2)
+      attr3 = $('form').find('input[id=todo_item_notes]').val()
       todoItem = new TodoItem()
       todoCol = new TodoCollection()
-      todoItem.set({description: attr1, complete: false, list_id: attr2})
+      todoItem.set({description: attr1, complete: false, list_id: attr2, notes: attr3})
       todoItem.save()
-      
+
       delay 300, ->
         todoCol.fetch({success: (collection) ->
-          console.log(collection)
           todoItem = collection.last()
-          console.log(todoItem)
           todoView = new TodoView({model: todoItem})
           todoView.render()
           $('form').remove()
