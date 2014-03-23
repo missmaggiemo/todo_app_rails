@@ -1,5 +1,6 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:new]
 
   # GET /todo_items
   # GET /todo_items.json
@@ -75,6 +76,10 @@ class TodoItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_item
       @todo_item = TodoItem.find(params[:id])
+    end
+
+    def set_list
+      @list = List.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

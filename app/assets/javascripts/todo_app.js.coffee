@@ -16,7 +16,7 @@ $(document).ready ->
 
   $('.todo_item').on('click', '#notes_link', (event) ->
     event.preventDefault()
-    $(this).closest('.notes_holder').find('#notes').fadeToggle(200)
+    $(this).closest('.todo_item').find('#notes').fadeToggle(200)
     );
 
 
