@@ -8,7 +8,7 @@
       <table>
         <tbody>
             <tr>
-              <td><h3><%= check_box_tag name='complete', checked= item.complete %></h3></td>
+              <td><%= check_box_tag name='complete', checked= item.complete %></td>
               <td><h3><%= link_to item.description, '#', id:'notes_link' %></h3></td>
               <td><%= link_to 'Edit', edit_todo_item_path(item) %></td>
               <td><%= link_to 'Remove', item, method: :delete, id: 'destroy', rel: 'nofollow' %></td>
@@ -29,6 +29,6 @@
 
 </div>
 
-<div class="center">
+<div class="bottom_links center">
   <%= link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
