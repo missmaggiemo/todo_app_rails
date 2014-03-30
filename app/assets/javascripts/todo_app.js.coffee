@@ -18,7 +18,15 @@ $(document).ready ->
     event.preventDefault()
     $(this).closest('.todo_item').find('#notes').fadeToggle(200)
     );
+    # this didn't work in the view
 
+  $('.todo_item').on('change', '#complete', (event) ->
+    console.log(this)
+    if $(this).val() == 'false'
+      $(this).val(true)
+    else
+      $(this).val(false)
+    );
 
   $('#new').click (event) ->
     event.preventDefault()
@@ -44,7 +52,7 @@ $(document).ready ->
 
   $('#clear').click (event) ->
     event.preventDefault()
-    $('input:checkbox:checked').closest('.todo_item').each ->
-      console.log($(this).find('#destroy'))
-      $(this).find('#destroy').click()
-      $(this).remove()
+    $('input:checkbox:checked').each ->
+      console.log('Destroy item.')
+      $(this).closest('.todo_item').find('#destroy').click()
+      $(this).closest('.todo_item').remove()

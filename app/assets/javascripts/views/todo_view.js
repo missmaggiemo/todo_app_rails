@@ -5,8 +5,21 @@ var TodoView = Backbone.View.extend({
   className: 'todo_item',
   template: _.template(html),
   events: {
+    'click input': 'check',
     'click #notes_link': 'fadeNotes',
-    'click #edit': 'editItem'
+    'click #edit': 'editItem',
+    'click #destroy': 'deleteItem'
+    // these events only work with items that I've generated via the view
+  },
+
+  check: function(event){
+    var val = this.$('input').val();
+    if(val === 'false' || val === 'on'){
+      this.$('input').val(true);
+    } else {
+      this.$('input').val(false);
+    }
+    console.log(this.$('input').val());
   },
 
   fadeNotes: function(event){
@@ -15,7 +28,14 @@ var TodoView = Backbone.View.extend({
   },
 
   editItem: function(event){
-    // stuff should go here
+    // edit item form
+  },
+
+  deleteItem: function(event){
+    // event.preventDefault();
+    // console.log(this);
+    // this.model.destroy();
+    // this.$el.remove();
   },
 
   render: function(){
