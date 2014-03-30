@@ -32,10 +32,7 @@ var TodoView = Backbone.View.extend({
   },
 
   deleteItem: function(event){
-    // event.preventDefault();
-    // console.log(this);
-    // this.model.destroy();
-    // this.$el.remove();
+    this.$el.remove();
   },
 
   render: function(){

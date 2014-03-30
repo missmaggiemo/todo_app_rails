@@ -18,7 +18,6 @@ $(document).ready ->
     event.preventDefault()
     $(this).closest('.todo_item').find('#notes').fadeToggle(200)
     );
-    # this didn't work in the view
 
   $('.todo_item').on('change', '#complete', (event) ->
     console.log(this)
