@@ -28,6 +28,11 @@ $(document).ready ->
       $(this).val(false)
     );
 
+  $('.todo_item').on('click', '#destroy', (event) ->
+    console.log(this)
+    $(this).closest('.todo_item').remove()
+    );
+
   $('#new').click (event) ->
     event.preventDefault()
     $(".todo_items").append(htmlNewItemForm)
