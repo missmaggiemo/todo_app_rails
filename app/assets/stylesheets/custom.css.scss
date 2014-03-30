@@ -75,7 +75,10 @@ a {
 
 	h1 {
 		margin-bottom: 10px;
-
+		font-size: 3em;
+		@media(max-width: 600px){
+			font-size: 2em;
+		}
 	}
 
 	#logo {
@@ -112,7 +115,7 @@ a {
 		float: right;
 		a {
 			display: inline-block;
-			margin-right: 20px
+			margin-right: 2vw;
 		}
 	}
 }

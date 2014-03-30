@@ -1,6 +1,8 @@
 class TodoItemsController < ApplicationController
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_list, only: [:new]
+  before_action :set_list_new, only: [:new]
+  before_action :set_list, only: [:edit, :update, :destroy]
+
 
   # GET /todo_items
   # GET /todo_items.json
@@ -43,7 +45,7 @@ class TodoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_item.update(todo_item_params)
-        format.html { redirect_to @todo_item }
+        format.html { redirect_to @list }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -55,10 +57,9 @@ class TodoItemsController < ApplicationController
   # DELETE /todo_items/1
   # DELETE /todo_items/1.json
   def destroy
-    list = @todo_item.list_id
     @todo_item.destroy
     respond_to do |format|
-      format.html { redirect_to list_path(list) }
+      format.html { redirect_to list_path(@list.id) }
       format.json { head :no_content }
     end
   end
@@ -78,8 +79,12 @@ class TodoItemsController < ApplicationController
       @todo_item = TodoItem.find(params[:id])
     end
 
-    def set_list
+    def set_list_new
       @list = List.find(params[:id])
+    end
+
+    def set_list
+      @list = List.find_by_id(@todo_item.list_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
