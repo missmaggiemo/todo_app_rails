@@ -40,7 +40,7 @@ $(document).ready ->
           todoView.render()
           $('form').remove()
           $('.todo_items').append(todoView.el)})
-
+# where should all this crap live?
 
   $('#clear').click (event) ->
     event.preventDefault()
