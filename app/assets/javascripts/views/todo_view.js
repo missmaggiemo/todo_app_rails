@@ -6,7 +6,7 @@ var TodoView = Backbone.View.extend({
   template: _.template(html),
   events: {
     'click #notes_link': 'fadeNotes',
-    'click #edit':
+    'click #edit': 'editItem'
   },
 
   fadeNotes: function(event){
